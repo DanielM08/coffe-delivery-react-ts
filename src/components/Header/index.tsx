@@ -1,6 +1,6 @@
-import { Actions, HeaderContainer, HeaderContent } from './styled'
+import { Actions, HeaderContainer, HeaderContent } from './styles'
 
-import logoIgnite from '../../assets/1-logo.svg'
+import logoCoffeeDelivery from '../../assets/1-logo.svg'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 import { NavLink } from 'react-router-dom'
 
@@ -9,7 +9,7 @@ export function Header() {
     <HeaderContainer>
       <HeaderContent>
         <NavLink to="/" title="Home">
-          <img src={logoIgnite} alt="" />
+          <img src={logoCoffeeDelivery} alt="" />
         </NavLink>
         <Actions>
           <div>
