@@ -1,7 +1,7 @@
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 import { HomeText, IntroContainer, MarketingElement, MarketingElements, Title } from "./styles";
 
-import logoCoffeeDelivery from '../../../assets/2-logo.svg'
+import logoCoffeeDelivery from '../../../../assets/2-logo.svg'
 
 export function Intro(){
   return (

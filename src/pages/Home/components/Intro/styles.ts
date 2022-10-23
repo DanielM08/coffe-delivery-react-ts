@@ -2,6 +2,9 @@ import styled from "styled-components"
 
 export const IntroContainer = styled.main`
   margin-top: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 `
 
 export const HomeText = styled.main`
