@@ -99,7 +99,9 @@ export const BuyAction = styled.div`
 `
 
 export const Counter = styled.div`
+  width: 72px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 
   padding: 0.5rem;
