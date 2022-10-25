@@ -1,72 +1,84 @@
 import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from "phosphor-react";
 import { 
-  AddressContent, 
-  AddressDescription, 
-  AddressHeader, 
+  FormSection, 
+  FormDescription, 
+  FormHeader, 
   CheckoutContainer, 
   FormContent, 
-  Title 
+  FormFields, 
+  Input, 
+  Title, 
+  PaymentOptions,
+  PaymentOption,
+  OrderSummary,
+  OrderContent
 } from "./styles";
 
 export function Checkout(){
   return (
     <CheckoutContainer>
-      <FormContent>
-        <Title>
-          Complete seu pedido
-        </Title>
+      <form>
+        <FormContent>
+          <Title>
+            Complete seu pedido
+          </Title>
 
-        <AddressContent>
-          <AddressHeader>
-            <MapPin size={22} color='#C47F17'/>
-            <AddressDescription>
-              <h3>Endereço de Entrega</h3>  
-              <text>Informe o engereço onde deseja receber seu pedido</text>
-            </AddressDescription>          
-          </AddressHeader>
-          <form>
-            <input alt="CEP" placeholder="CEP" required />
-            <input alt="RUA" placeholder="Rua" required />
-            <div>
-              <input alt="Número" placeholder="Número" />
-              <input alt="Complemento" placeholder="Complemento" />
-            </div>
-            <div>
-              <input alt="Bairro" placeholder="Bairro" required />
-              <input alt="Cidade" placeholder="Cidade" required/>
-              <input alt="UF" placeholder="UF" required/>
-            </div>
-          </form>
-        </AddressContent>
+          <FormSection>
+            <FormHeader>
+              <MapPin size={22} color='#C47F17'/>
+              <FormDescription>
+                <h3>Endereço de Entrega</h3>  
+                <text>Informe o engereço onde deseja receber seu pedido</text>
+              </FormDescription>          
+            </FormHeader>
+            <FormFields>
+              <Input alt="CEP" placeholder="CEP" widthInput="others" required />
+              <Input alt="RUA" placeholder="Rua" widthInput="full" required />
+              <div>
+                <Input alt="Número" placeholder="Número" widthInput="others" />
+                <Input alt="Complemento" placeholder="Complemento" widthInput ="complement"/>
+              </div>
+              <div>
+                <Input alt="Bairro" placeholder="Bairro" widthInput="others" required />
+                <Input alt="Cidade" placeholder="Cidade" widthInput="city" required/>
+                <Input alt="UF" placeholder="UF" widthInput="uf" required/>
+              </div>
+            </FormFields>
+          </FormSection>
 
+          <FormSection>
+            <FormHeader>
+              <CurrencyDollar size={22} color='#8047F8'/>
+              <FormDescription>
+                <h3>Pagamento</h3>
+                <text>O pagamento é feito na entrega. Escola a forma que deseja pagar</text>
+              </FormDescription>                      
+            </FormHeader>
 
-        <div>
-          <header>
-            <CurrencyDollar size={22}/>
-            <h3>Pagamento</h3>
-            <text>O pagamento é feito na entrega. Escola a forma que deseja pagar</text>
-          </header>
+            <PaymentOptions>
+              <PaymentOption>
+                <CreditCard size={16} color='#8047F8'/>
+                <text>CARTÃO DE CRÉDITO</text>
+              </PaymentOption>
+              <PaymentOption>
+                <Money size={16} color='#8047F8'/>
+                <text>CARTÃO DE DÉBITO</text>
+              </PaymentOption>
+              <PaymentOption>
+                <Bank size={16} color='#8047F8'/>
+                <text>DINHEIRO</text>
+              </PaymentOption>
+            </PaymentOptions>
+          </FormSection>
+        </FormContent>
 
-          <div>
-            <button>
-              <CreditCard size={22}/>
-              CARTÃO DE CRÉDITO
-            </button>
-            <button>
-              <Money size={22}/>
-              CARTÃO DE DÉBITO
-            </button>
-            <button>
-              <Bank size={22}/>
-              DINHEIRO
-            </button>
-          </div>
-        </div>
-      </FormContent>
-      <div>
-        <Title>Cafés selecionados</Title>
-        <div></div>
-      </div>
+        <OrderSummary>
+          <Title>Cafés selecionados</Title>
+          <OrderContent>
+            
+          </OrderContent>
+        </OrderSummary>
+      </form>
     </CheckoutContainer>
   )
 }
