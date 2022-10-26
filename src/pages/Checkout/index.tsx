@@ -1,4 +1,4 @@
-import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from "phosphor-react";
+import { Bank, CreditCard, CurrencyDollar, MapPin, Minus, Money, Plus, Trash } from "phosphor-react";
 import { 
   FormSection, 
   FormDescription, 
@@ -11,8 +11,21 @@ import {
   PaymentOptions,
   PaymentOption,
   OrderSummary,
-  OrderContent
+  OrderContent,
+  Counter,
+  CoffeeQuantityButton,
+  CoffeeCard,
+  Info,
+  Details,
+  Actions,
+  RemoveItemButton,
+  PriceSummary,
+  PriceElement,
+  ConfirmOrderButton
 } from "./styles";
+
+import expresso from '../../assets/expresso.svg'
+import latte from '../../assets/latte.svg'
 
 export function Checkout(){
   return (
@@ -75,7 +88,72 @@ export function Checkout(){
         <OrderSummary>
           <Title>Cafés selecionados</Title>
           <OrderContent>
-            
+            <CoffeeCard>
+              <Info>
+                <img src={expresso} />
+                <Details>
+                  <text>Expresso Tradicional</text>
+                  <Actions>
+                    <Counter>
+                      <CoffeeQuantityButton>
+                        <Minus size={12}/>
+                      </CoffeeQuantityButton>
+                      <text>1</text>
+                      <CoffeeQuantityButton>
+                        <Plus size={12}/>
+                      </CoffeeQuantityButton>
+                    </Counter>
+                    <RemoveItemButton>
+                      <Trash size ={16} color='#8047F8'/>
+                      <text>REMOVER</text>
+                    </RemoveItemButton>
+                  </Actions>
+                </Details>
+              </Info>
+              <strong>R$ 9,90</strong>
+            </CoffeeCard>
+            <CoffeeCard>
+              <Info>
+                <img src={latte} />
+                <Details>
+                  <text>Expresso Tradicional</text>
+                  <Actions>
+                    <Counter>
+                      <CoffeeQuantityButton>
+                        <Minus size={12}/>
+                      </CoffeeQuantityButton>
+                      <text>1</text>
+                      <CoffeeQuantityButton>
+                        <Plus size={12}/>
+                      </CoffeeQuantityButton>
+                    </Counter>
+                    <RemoveItemButton>
+                      <Trash size ={16} color='#8047F8'/>
+                      <text>REMOVER</text>
+                    </RemoveItemButton>
+                  </Actions>
+                </Details>
+              </Info>
+              <strong>R$ 9,90</strong>
+            </CoffeeCard>
+
+            <PriceSummary>
+              <PriceElement>
+                <text>Total de Itens</text>
+                <text>R$ 29,70</text>
+              </PriceElement>
+              <PriceElement>
+                <text>Entrega</text>
+                <text>R$ 3,50</text>
+              </PriceElement>
+              <PriceElement>
+                <h2>Total</h2>
+                <h2>R$ 33,20</h2>
+              </PriceElement>
+            </PriceSummary>
+            <ConfirmOrderButton>
+              Confirmar pedido
+            </ConfirmOrderButton>
           </OrderContent>
         </OrderSummary>
       </form>

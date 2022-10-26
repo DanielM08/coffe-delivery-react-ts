@@ -136,4 +136,137 @@ export const OrderSummary = styled.div`
 
 export const OrderContent = styled(FormSection)`
   border-radius: 6px 44px;
+
+  strong {
+    align-self: flex-start;
+  }
+`
+
+export const CoffeeCard = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem 0.25rem;
+  gap: 0.5rem;
+
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid ${props => props.theme["base-button"]};
+`
+
+export const Info = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 1.25rem;
+
+  img {
+    width: 4rem;
+  }
+`
+
+export const Details = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  gap: 0.5rem;
+
+  text { 
+    font-size: 1rem;
+    line-height: 1.3;
+    display: flex;
+    align-items: center;
+    color: ${props => props.theme["base-subtitle"]}
+  }
+`
+
+export const Actions = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 0.5rem;
+`
+
+export const Counter = styled.div`
+  width: 4.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0.3rem;
+  gap: 0.5rem;
+
+  background: ${props => props.theme["base-button"]};
+  border-radius: 6px;
+`
+
+const Button = styled.button`
+  display: flex;
+  justify-content: center;
+  border: 0;
+
+  cursor: pointer;
+`
+
+export const CoffeeQuantityButton = styled(Button)`
+  background: ${props => props.theme["base-button"]};
+  color: ${props => props.theme["purple-dark"]};
+`
+
+export const RemoveItemButton = styled(Button)` 
+  align-items: center;
+  padding: 0.35rem;
+  gap: 0.25rem;
+
+  background: ${props => props.theme["base-button"]};
+  border-radius: 6px;
+
+  text { 
+    font-size: 0.75rem;
+    color: ${props => props.theme["base-text"]};
+    line-height: 1.6;
+  }
+`
+
+export const PriceSummary = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px;
+  gap: 0.75rem;
+`
+
+export const PriceElement = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 0.5rem;
+
+  text {
+    font-size: 0.875rem;
+    line-height: 1.3;
+  }
+
+  h2 {
+    color: ${props => props.theme["base-subtitle"]}
+  }
+`
+
+export const ConfirmOrderButton = styled(Button)`
+  flex-direction: row;
+  align-items: center;
+  padding: 0.75rem 0.5rem;
+  gap: 0.125rem;
+
+  background: ${props => props.theme.yellow};
+  border-radius: 6px;
+
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 160%;
+  text-transform: uppercase;
+  color: ${props => props.theme.white};
 `
