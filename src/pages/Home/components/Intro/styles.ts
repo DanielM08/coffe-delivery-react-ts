@@ -1,10 +1,12 @@
 import styled from "styled-components"
+import background from '../../../../assets/background.svg'
 
 export const IntroContainer = styled.main`
   margin-top: 5rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  background-image: url(${background});
 `
 
 export const HomeText = styled.main`
