@@ -37,19 +37,38 @@ export const Actions = styled.div`
     font-size: 0.875rem;
     line-height: 1.3;
   }
+`
 
-  nav {
-    padding: 0.5rem;
-    border-radius: 6px;
+export const Cart = styled.nav`
+  padding: 0.5rem;
+  gap: 0.25rem;
+  border-radius: 6px;
+  position: relative;
 
-    background: ${props => props.theme['yellow-light']};
+  background: ${props => props.theme['yellow-light']};
 
-    a {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      color: ${props => props.theme['yellow-dark']};
-    }
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ${props => props.theme['yellow-dark']};
   }
 `
+
+export const ShoppingItemsCounter = styled.strong`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: ${props => props.theme['yellow-dark']};
+
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: -10px;
+  right: -10px;
+  border-radius: 1000px;
+
+  color: ${props => props.theme.white};
+  font-size: 0.75rem;
+`;  

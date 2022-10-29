@@ -112,6 +112,11 @@ const Button = styled.button`
   border: 0;
 
   cursor: pointer;
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
 `
 
 export const CoffeeQuantityButton = styled(Button)`

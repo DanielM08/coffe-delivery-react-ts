@@ -1,5 +1,5 @@
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CoffeeOrderContext } from "../../../../contexts/CoffeeOrderContext";
 import { priceFormatter } from "../../../../utils/formatter";
 import { 
@@ -28,20 +28,21 @@ export function CoffeeCard({ description, imgSrc, name, price, tags }: CardProps
 
   const [coffeeQuantity, setCoffeeQuantity] = useState(0);
 
+  useEffect(() => {
+    setCoffeeQuantity(coffeeOrder.find(coffee => coffee.name === name)?.quantity ?? 0);
+  },[coffeeOrder]);
+
   function handleCoffeeDecrease(){
     if(coffeeQuantity > 0){
       setCoffeeQuantity((state) => state -= 1);
 
       removeCoffeeFromOrder(name)
-
-      console.log(coffeeOrder)
     }
   }
   function handleCoffeeIncrease(){
     setCoffeeQuantity((state) => state += 1);
 
     addCoffeeToOrder({ name, imgSrc, price });
-    console.log(coffeeOrder)
   }
 
   return (
@@ -77,7 +78,7 @@ export function CoffeeCard({ description, imgSrc, name, price, tags }: CardProps
               <Plus size={12}/>
             </CoffeeQuantityButton>
           </Counter>
-          <ShoppingButton>
+          <ShoppingButton disabled>
             <ShoppingCart size={22} weight="fill"/>
           </ShoppingButton>          
         </BuyAction>
