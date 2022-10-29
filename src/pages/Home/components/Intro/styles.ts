@@ -29,7 +29,7 @@ export const Title = styled.div`
     color: ${props => props.theme["base-title"]};
   }
 
-  text {
+  p {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;

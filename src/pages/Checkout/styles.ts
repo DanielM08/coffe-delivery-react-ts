@@ -51,7 +51,7 @@ export const FormDescription = styled.div`
     line-height: 1.3rem;
   }
 
-  text {
+  p {
     font-size: 0.875rem;
     line-height: 1.3;
   }
@@ -119,7 +119,7 @@ export const PaymentOption = styled.button`
 
   cursor: pointer;
 
-  text {
+  p {
     font-size: 0.75rem;
     line-height: 1.6;
     text-transform: uppercase;
@@ -171,7 +171,7 @@ export const Details = styled.div`
   padding: 0px;
   gap: 0.5rem;
 
-  text { 
+  p { 
     font-size: 1rem;
     line-height: 1.3;
     display: flex;
@@ -222,7 +222,7 @@ export const RemoveItemButton = styled(Button)`
   background: ${props => props.theme["base-button"]};
   border-radius: 6px;
 
-  text { 
+  p { 
     font-size: 0.75rem;
     color: ${props => props.theme["base-text"]};
     line-height: 1.6;
@@ -245,7 +245,7 @@ export const PriceElement = styled.div`
   padding: 0px;
   gap: 0.5rem;
 
-  text {
+  p {
     font-size: 0.875rem;
     line-height: 1.3;
   }

@@ -17,15 +17,6 @@ import havaiano from '../../assets/havaiano.svg';
 import arabe from '../../assets/arabe.svg';
 import irlandes from '../../assets/irlandes.svg';
 
-
-interface CardInfo {
-  name: string;
-  description: string;
-  tags: string[];
-  price: number;
-  imgSrc: string;
-}
-
 const CoffeeCards = [
   {
     name: 'Expresso Tradicional',

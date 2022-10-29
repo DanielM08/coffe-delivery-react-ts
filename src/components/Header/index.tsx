@@ -14,7 +14,7 @@ export function Header() {
         <Actions>
           <div>
             <MapPin size={22} weight='fill'/>
-            <text>Apodi, RN</text>
+            <span>Apodi, RN</span>
           </div>
           <nav>
             <NavLink to="/checkout" title="Checkout">

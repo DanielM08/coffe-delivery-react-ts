@@ -41,7 +41,7 @@ export function Checkout(){
               <MapPin size={22} color='#C47F17'/>
               <FormDescription>
                 <h3>Endereço de Entrega</h3>  
-                <text>Informe o engereço onde deseja receber seu pedido</text>
+                <p>Informe o engereço onde deseja receber seu pedido</p>
               </FormDescription>          
             </FormHeader>
             <FormFields>
@@ -64,22 +64,22 @@ export function Checkout(){
               <CurrencyDollar size={22} color='#8047F8'/>
               <FormDescription>
                 <h3>Pagamento</h3>
-                <text>O pagamento é feito na entrega. Escola a forma que deseja pagar</text>
+                <p>O pagamento é feito na entrega. Escola a forma que deseja pagar</p>
               </FormDescription>                      
             </FormHeader>
 
             <PaymentOptions>
               <PaymentOption>
                 <CreditCard size={16} color='#8047F8'/>
-                <text>CARTÃO DE CRÉDITO</text>
+                <p>CARTÃO DE CRÉDITO</p>
               </PaymentOption>
               <PaymentOption>
                 <Money size={16} color='#8047F8'/>
-                <text>CARTÃO DE DÉBITO</text>
+                <p>CARTÃO DE DÉBITO</p>
               </PaymentOption>
               <PaymentOption>
                 <Bank size={16} color='#8047F8'/>
-                <text>DINHEIRO</text>
+                <p>DINHEIRO</p>
               </PaymentOption>
             </PaymentOptions>
           </FormSection>
@@ -92,20 +92,20 @@ export function Checkout(){
               <Info>
                 <img src={expresso} />
                 <Details>
-                  <text>Expresso Tradicional</text>
+                  <p>Expresso Tradicional</p>
                   <Actions>
                     <Counter>
                       <CoffeeQuantityButton>
                         <Minus size={12}/>
                       </CoffeeQuantityButton>
-                      <text>1</text>
+                      <p>1</p>
                       <CoffeeQuantityButton>
                         <Plus size={12}/>
                       </CoffeeQuantityButton>
                     </Counter>
                     <RemoveItemButton>
                       <Trash size ={16} color='#8047F8'/>
-                      <text>REMOVER</text>
+                      <p>REMOVER</p>
                     </RemoveItemButton>
                   </Actions>
                 </Details>
@@ -116,20 +116,20 @@ export function Checkout(){
               <Info>
                 <img src={latte} />
                 <Details>
-                  <text>Expresso Tradicional</text>
+                  <p>Expresso Tradicional</p>
                   <Actions>
                     <Counter>
                       <CoffeeQuantityButton>
                         <Minus size={12}/>
                       </CoffeeQuantityButton>
-                      <text>1</text>
+                      <span>1</span>
                       <CoffeeQuantityButton>
                         <Plus size={12}/>
                       </CoffeeQuantityButton>
                     </Counter>
                     <RemoveItemButton>
                       <Trash size ={16} color='#8047F8'/>
-                      <text>REMOVER</text>
+                      <p>REMOVER</p>
                     </RemoveItemButton>
                   </Actions>
                 </Details>
@@ -139,12 +139,12 @@ export function Checkout(){
 
             <PriceSummary>
               <PriceElement>
-                <text>Total de Itens</text>
-                <text>R$ 29,70</text>
+                <p>Total de Itens</p>
+                <p>R$ 29,70</p>
               </PriceElement>
               <PriceElement>
-                <text>Entrega</text>
-                <text>R$ 3,50</text>
+                <p>Entrega</p>
+                <p>R$ 3,50</p>
               </PriceElement>
               <PriceElement>
                 <h2>Total</h2>

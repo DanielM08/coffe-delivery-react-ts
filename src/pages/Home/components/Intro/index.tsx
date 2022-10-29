@@ -9,7 +9,7 @@ export function Intro(){
       <HomeText>
         <Title>
           <h1>Encontre o café perfeito para qualquer hora do dia</h1>
-          <text>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</text>
+          <p>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
         </Title>
         <MarketingElements>
           <MarketingElement color="yellow-dark">
