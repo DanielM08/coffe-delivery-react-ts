@@ -17,6 +17,7 @@ interface OrderItem extends CoffeeInfo {
 interface CoffeeOrderContextType {
   coffeeOrder: OrderItem[],
   totalCoffeeItems: number;
+  totalItemsPrice: number;
   addCoffeeToOrder: (c: CoffeeInfo) => void;
   removeCoffeeFromOrder: (name: string) => void;
 }
@@ -27,6 +28,7 @@ export function CoffeeOrderContextProvider({ children }: CoffeeOrderContextProps
 
   const [coffeeOrder, setCoffeeOrder] = useState<OrderItem[]>([]);
   const [totalCoffeeItems, setTotalCoffeeItems] = useState(0);
+  const [totalItemsPrice, setTotalItemsPrice] = useState(0);
 
   function addCoffeeToOrder({ name, imgSrc, price }: CoffeeInfo) {
     const newState = coffeeOrder;
@@ -38,14 +40,17 @@ export function CoffeeOrderContextProvider({ children }: CoffeeOrderContextProps
       newState[orderItemIndex].quantity += 1;
     }
 
+    setTotalItemsPrice(state => state + price);
     setTotalCoffeeItems(state => state += 1);
     setCoffeeOrder(newState);
   }
 
   function removeCoffeeFromOrder( name: string ) {
+    let itemPrice = 0
     const newState = coffeeOrder.filter(coffee => {
       if(coffee.name === name) {
         coffee.quantity -= 1;
+        itemPrice = coffee.price;
         if(coffee.quantity === 0){
           return false
         }
@@ -54,6 +59,7 @@ export function CoffeeOrderContextProvider({ children }: CoffeeOrderContextProps
       return true;
     });
 
+    setTotalItemsPrice(state => state - itemPrice);
     setTotalCoffeeItems(state => state -= 1);
     setCoffeeOrder(newState);
   }
@@ -63,6 +69,7 @@ export function CoffeeOrderContextProvider({ children }: CoffeeOrderContextProps
       value={{
         coffeeOrder,
         totalCoffeeItems,
+        totalItemsPrice,
         addCoffeeToOrder,
         removeCoffeeFromOrder
       }}

@@ -1,4 +1,4 @@
-import { Bank, CreditCard, CurrencyDollar, MapPin, Minus, Money, Plus, Trash } from "phosphor-react";
+import { Bank, CreditCard, CurrencyDollar, MapPin, Money } from "phosphor-react";
 import { 
   FormSection, 
   FormDescription, 
@@ -12,22 +12,20 @@ import {
   PaymentOption,
   OrderSummary,
   OrderContent,
-  Counter,
-  CoffeeQuantityButton,
-  CoffeeCard,
-  Info,
-  Details,
-  Actions,
-  RemoveItemButton,
   PriceSummary,
   PriceElement,
   ConfirmOrderButton
 } from "./styles";
+import { useContext } from "react";
+import { CoffeeOrderContext } from "../../contexts/CoffeeOrderContext";
+import { CoffeeCard } from "./CoffeeCard";
+import { currencyFormatter } from "../../utils/formatter";
 
-import expresso from '../../assets/expresso.svg'
-import latte from '../../assets/latte.svg'
+const deliveryPrice = 3.5;
 
 export function Checkout(){
+  const { coffeeOrder, totalItemsPrice } = useContext(CoffeeOrderContext);
+
   return (
     <CheckoutContainer>
       <form>
@@ -88,70 +86,35 @@ export function Checkout(){
         <OrderSummary>
           <Title>Cafés selecionados</Title>
           <OrderContent>
-            <CoffeeCard>
-              <Info>
-                <img src={expresso} />
-                <Details>
-                  <p>Expresso Tradicional</p>
-                  <Actions>
-                    <Counter>
-                      <CoffeeQuantityButton>
-                        <Minus size={12}/>
-                      </CoffeeQuantityButton>
-                      <p>1</p>
-                      <CoffeeQuantityButton>
-                        <Plus size={12}/>
-                      </CoffeeQuantityButton>
-                    </Counter>
-                    <RemoveItemButton>
-                      <Trash size ={16} color='#8047F8'/>
-                      <p>REMOVER</p>
-                    </RemoveItemButton>
-                  </Actions>
-                </Details>
-              </Info>
-              <strong>R$ 9,90</strong>
-            </CoffeeCard>
-            <CoffeeCard>
-              <Info>
-                <img src={latte} />
-                <Details>
-                  <p>Expresso Tradicional</p>
-                  <Actions>
-                    <Counter>
-                      <CoffeeQuantityButton>
-                        <Minus size={12}/>
-                      </CoffeeQuantityButton>
-                      <span>1</span>
-                      <CoffeeQuantityButton>
-                        <Plus size={12}/>
-                      </CoffeeQuantityButton>
-                    </Counter>
-                    <RemoveItemButton>
-                      <Trash size ={16} color='#8047F8'/>
-                      <p>REMOVER</p>
-                    </RemoveItemButton>
-                  </Actions>
-                </Details>
-              </Info>
-              <strong>R$ 9,90</strong>
-            </CoffeeCard>
-
+            <>
+              {
+                coffeeOrder.map(coffee =>                 
+                  <CoffeeCard 
+                    imgSrc={coffee.imgSrc}
+                    name={coffee.name}
+                    price={coffee.price}
+                    quantity={coffee.quantity}
+                    key={coffee.name}
+                  />
+                )
+              }
+            </>
             <PriceSummary>
               <PriceElement>
                 <p>Total de Itens</p>
-                <p>R$ 29,70</p>
+                <p>{currencyFormatter.format(totalItemsPrice)}</p>
               </PriceElement>
               <PriceElement>
                 <p>Entrega</p>
-                <p>R$ 3,50</p>
+                <p>{currencyFormatter.format(deliveryPrice)}</p>
               </PriceElement>
               <PriceElement>
                 <h2>Total</h2>
-                <h2>R$ 33,20</h2>
+                <h2>{currencyFormatter.format(totalItemsPrice + deliveryPrice)}</h2>
               </PriceElement>
             </PriceSummary>
-            <ConfirmOrderButton>
+
+            <ConfirmOrderButton type="submit" disabled={totalItemsPrice === 0}>
               Confirmar pedido
             </ConfirmOrderButton>
           </OrderContent>
