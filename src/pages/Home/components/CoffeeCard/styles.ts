@@ -55,7 +55,7 @@ export const Description = styled.div`
     line-height: 1.3;
   }
 
-  text {
+  p {
     color: ${props => props.theme["base-label"]};
   }
 
@@ -83,7 +83,7 @@ export const PriceContent = styled.div`
     font-weight: 800;
     font-size: 1.5rem;
   }
-  text {
+  p {
     font-size: 0.875rem;
   }
 `

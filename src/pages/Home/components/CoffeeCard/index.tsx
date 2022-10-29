@@ -1,4 +1,6 @@
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
+import { useContext, useState } from "react";
+import { CoffeeOrderContext } from "../../../../contexts/CoffeeOrderContext";
 import { priceFormatter } from "../../../../utils/formatter";
 import { 
   BuyAction, 
@@ -22,6 +24,26 @@ interface CardProps {
 }
 
 export function CoffeeCard({ description, imgSrc, name, price, tags }: CardProps){
+  const { addCoffeeToOrder, removeCoffeeFromOrder, coffeeOrder } = useContext(CoffeeOrderContext);
+
+  const [coffeeQuantity, setCoffeeQuantity] = useState(0);
+
+  function handleCoffeeDecrease(){
+    if(coffeeQuantity > 0){
+      setCoffeeQuantity((state) => state -= 1);
+
+      removeCoffeeFromOrder(name)
+
+      console.log(coffeeOrder)
+    }
+  }
+  function handleCoffeeIncrease(){
+    setCoffeeQuantity((state) => state += 1);
+
+    addCoffeeToOrder({ name, imgSrc, price });
+    console.log(coffeeOrder)
+  }
+
   return (
     <CoffeeCardContainer>
       <img src={imgSrc}/>
@@ -38,20 +60,20 @@ export function CoffeeCard({ description, imgSrc, name, price, tags }: CardProps
       </TagList>
       <Description>
         <h3>{name}</h3>
-        <text>{description}</text>          
+        <p>{description}</p>          
       </Description>
       <BuyContent>
         <PriceContent>
-          <text>R$</text>
+          <p>R$</p>
           <h3>{priceFormatter.format(price)}</h3>
         </PriceContent>
         <BuyAction>
           <Counter>
-            <CoffeeQuantityButton>
+            <CoffeeQuantityButton onClick={handleCoffeeDecrease}>
               <Minus size={12}/>
             </CoffeeQuantityButton>
-            <text>1</text>
-            <CoffeeQuantityButton>
+            <span>{coffeeQuantity}</span>
+            <CoffeeQuantityButton onClick={handleCoffeeIncrease}>
               <Plus size={12}/>
             </CoffeeQuantityButton>
           </Counter>
