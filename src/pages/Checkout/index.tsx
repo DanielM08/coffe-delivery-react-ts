@@ -16,7 +16,7 @@ import {
   PriceElement,
   ConfirmOrderButton
 } from "./styles";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CoffeeOrderContext } from "../../contexts/CoffeeOrderContext";
 import { CoffeeCard } from "./CoffeeCard";
 import { currencyFormatter } from "../../utils/formatter";
@@ -25,6 +25,11 @@ const deliveryPrice = 3.5;
 
 export function Checkout(){
   const { coffeeOrder, totalItemsPrice } = useContext(CoffeeOrderContext);
+  const [paymentOption, setPaymentOption] = useState('money');
+
+  function handlePaymentOption(selectedOption: string){
+    setPaymentOption(selectedOption);
+  }
 
   return (
     <CheckoutContainer>
@@ -67,17 +72,31 @@ export function Checkout(){
             </FormHeader>
 
             <PaymentOptions>
-              <PaymentOption>
+              <PaymentOption 
+                active={ paymentOption === 'credit_card' }
+                onClick={() => handlePaymentOption('credit_card')}
+                value='Credit card'
+              >
                 <CreditCard size={16} color='#8047F8'/>
-                <p>CARTÃO DE CRÉDITO</p>
+                CARTÃO DE CRÉDITO
               </PaymentOption>
-              <PaymentOption>
-                <Money size={16} color='#8047F8'/>
-                <p>CARTÃO DE DÉBITO</p>
-              </PaymentOption>
-              <PaymentOption>
+
+              <PaymentOption
+                active={ paymentOption === 'debit_card' }
+                onClick={() => handlePaymentOption('debit_card')}
+                value='Debit card'                
+              >
                 <Bank size={16} color='#8047F8'/>
-                <p>DINHEIRO</p>
+                CARTÃO DE DÉBITO
+              </PaymentOption>
+
+              <PaymentOption
+                active={ paymentOption === 'money' }
+                onClick={() => handlePaymentOption('money')}
+                value='Money'
+              >
+                <Money size={16} color='#8047F8'/>
+                DINHEIRO
               </PaymentOption>
             </PaymentOptions>
           </FormSection>
@@ -114,7 +133,7 @@ export function Checkout(){
               </PriceElement>
             </PriceSummary>
 
-            <ConfirmOrderButton type="submit" disabled={totalItemsPrice === 0}>
+            <ConfirmOrderButton disabled={!totalItemsPrice} type="submit">
               Confirmar pedido
             </ConfirmOrderButton>
           </OrderContent>

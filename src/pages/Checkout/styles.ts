@@ -104,27 +104,42 @@ export const PaymentOptions = styled.div`
   gap: 0.75rem;
 `
 
-export const PaymentOption = styled.button`
+interface PaymentOptionProps {
+  active: boolean
+}
+
+export const PaymentOption = styled.button<PaymentOptionProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 1rem;
   gap: 0.75rem;
-  border: 0;
 
   width: 100%;
 
-  background: ${props => props.theme["base-button"]};
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: ${props => props.theme["base-text"]};
+
+  background: ${(props) =>
+      props.active 
+        ? props.theme["purple-light"]
+        : props.theme["base-button"]};
+
   border-radius: 6px;
+  border: 1px solid ${(props) =>
+    props.active 
+      ? props.theme["purple"]
+      : props.theme["base-button"]};
 
-  cursor: pointer;
-
-  p {
-    font-size: 0.75rem;
-    line-height: 1.6;
-    text-transform: uppercase;
-    color: ${props => props.theme["base-text"]};
+  &:hover{
+    transition: 0.2s;
+    background: ${(props) =>
+      props.active 
+        ? props.theme["purple-light"]
+        : props.theme["base-hover"]};
   }
+  cursor: pointer;
 `
 
 export const OrderSummary = styled.div`
@@ -188,4 +203,13 @@ export const ConfirmOrderButton = styled.button`
   line-height: 160%;
   text-transform: uppercase;
   color: ${props => props.theme.white};
+
+  &:not(:disabled):hover {
+    background: ${(props) => props.theme["yellow-dark"]};
+  }
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
 `
