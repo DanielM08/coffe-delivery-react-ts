@@ -20,20 +20,53 @@ import { useContext, useState } from "react";
 import { CoffeeOrderContext } from "../../contexts/CoffeeOrderContext";
 import { CoffeeCard } from "./CoffeeCard";
 import { currencyFormatter } from "../../utils/formatter";
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod'
+import * as zod from 'zod'
 
 const deliveryPrice = 3.5;
 
+const finishOrderFormValidationSchema = zod.object({
+  cep: zod.string().min(6, 'Informe o CEP'),
+  street: zod.string().min(5, 'Informe a Rua'),
+  num: zod.string().min(3, 'Informe o número'),
+  complement: zod.string(),
+  district: zod.string().min(5, 'Informe o bairro'),
+  city: zod.string().min(5, 'Informe a cidade'),
+  uf: zod.string().max(2, 'Informe o UF'),
+})
+
+type FinishOrderFormData = zod.infer<typeof finishOrderFormValidationSchema>
+
 export function Checkout(){
+  const { register, handleSubmit, reset } = useForm<FinishOrderFormData>({
+    resolver: zodResolver(finishOrderFormValidationSchema),
+    defaultValues: {
+      cep: '',
+      city: '',
+      complement: '',
+      district: '',
+      num: '',
+      street: '',
+      uf: '',
+    },
+  });
+
   const { coffeeOrder, totalItemsPrice } = useContext(CoffeeOrderContext);
   const [paymentOption, setPaymentOption] = useState('money');
 
-  function handlePaymentOption(selectedOption: string){
+  function handlePaymentOption(selectedOption: string) {
     setPaymentOption(selectedOption);
+  }
+
+  function handleFinishPayment(data: FinishOrderFormData) {
+
+    reset();
   }
 
   return (
     <CheckoutContainer>
-      <form>
+      <form onSubmit={handleSubmit(handleFinishPayment)}>
         <FormContent>
           <Title>
             Complete seu pedido
@@ -48,16 +81,61 @@ export function Checkout(){
               </FormDescription>          
             </FormHeader>
             <FormFields>
-              <Input alt="CEP" placeholder="CEP" widthInput="others" required />
-              <Input alt="RUA" placeholder="Rua" widthInput="full" required />
+              <Input 
+                id="cep"
+                alt="CEP"
+                placeholder="CEP"
+                widthInput="others"
+                maxLength={9}
+                {...register('cep')}                
+              />
+              <Input 
+                id="rua"
+                alt="RUA"
+                placeholder="Rua"
+                widthInput="full"
+                maxLength={20}                 
+                {...register('street')}  
+              />
               <div>
-                <Input alt="Número" placeholder="Número" widthInput="others" />
-                <Input alt="Complemento" placeholder="Complemento" widthInput ="complement"/>
+                <Input 
+                  id="numero"
+                  alt="Número"
+                  placeholder="Número"
+                  widthInput="others"
+                  maxLength={5}          
+                  {...register('num')}
+                />
+                <Input
+                  alt="Complemento"
+                  placeholder="Complemento"
+                  widthInput ="complement"
+                  maxLength={20}
+                  {...register('complement')}
+                />
               </div>
               <div>
-                <Input alt="Bairro" placeholder="Bairro" widthInput="others" required />
-                <Input alt="Cidade" placeholder="Cidade" widthInput="city" required/>
-                <Input alt="UF" placeholder="UF" widthInput="uf" required/>
+                <Input
+                  alt="Bairro"
+                  placeholder="Bairro"
+                  widthInput="others" 
+                  maxLength={10}                 
+                  {...register('district')}
+                />
+                <Input
+                  alt="Cidade"
+                  placeholder="Cidade"
+                  widthInput="city"    
+                  maxLength={20}              
+                  {...register('city')}
+                />
+                <Input
+                  alt="UF"
+                  placeholder="UF"
+                  widthInput="uf"
+                  maxLength={2}                             
+                  {...register('uf')}
+                />
               </div>
             </FormFields>
           </FormSection>
@@ -67,7 +145,7 @@ export function Checkout(){
               <CurrencyDollar size={22} color='#8047F8'/>
               <FormDescription>
                 <h3>Pagamento</h3>
-                <p>O pagamento é feito na entrega. Escola a forma que deseja pagar</p>
+                <p>O pagamento é feito na entrega. Escolha a forma que deseja pagar</p>
               </FormDescription>                      
             </FormHeader>
 
