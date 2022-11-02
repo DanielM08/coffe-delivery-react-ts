@@ -23,13 +23,14 @@ import { currencyFormatter } from "../../utils/formatter";
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as zod from 'zod'
+import { useNavigate } from "react-router-dom";
 
 const deliveryPrice = 3.5;
 
 const finishOrderFormValidationSchema = zod.object({
   cep: zod.string().min(6, 'Informe o CEP'),
   street: zod.string().min(5, 'Informe a Rua'),
-  num: zod.string().min(3, 'Informe o número'),
+  num: zod.string(),
   complement: zod.string(),
   district: zod.string().min(5, 'Informe o bairro'),
   city: zod.string().min(5, 'Informe a cidade'),
@@ -43,30 +44,35 @@ export function Checkout(){
     resolver: zodResolver(finishOrderFormValidationSchema),
     defaultValues: {
       cep: '',
+      street: '',
+      num: '',
       city: '',
       complement: '',
       district: '',
-      num: '',
-      street: '',
       uf: '',
     },
   });
 
   const { coffeeOrder, totalItemsPrice } = useContext(CoffeeOrderContext);
   const [paymentOption, setPaymentOption] = useState('money');
+  const navigate = useNavigate()
 
   function handlePaymentOption(selectedOption: string) {
     setPaymentOption(selectedOption);
   }
 
   function handleFinishPayment(data: FinishOrderFormData) {
+    console.log(data)
+    console.log(paymentOption)
+    
+    navigate('/success')
 
     reset();
   }
 
   return (
     <CheckoutContainer>
-      <form onSubmit={handleSubmit(handleFinishPayment)}>
+      <form onSubmit={handleSubmit(handleFinishPayment)} action="">
         <FormContent>
           <Title>
             Complete seu pedido
@@ -94,8 +100,8 @@ export function Checkout(){
                 alt="RUA"
                 placeholder="Rua"
                 widthInput="full"
-                maxLength={20}                 
-                {...register('street')}  
+                maxLength={20}
+                {...register('street')}             
               />
               <div>
                 <Input 
@@ -103,7 +109,7 @@ export function Checkout(){
                   alt="Número"
                   placeholder="Número"
                   widthInput="others"
-                  maxLength={5}          
+                  maxLength={5}
                   {...register('num')}
                 />
                 <Input
@@ -119,22 +125,22 @@ export function Checkout(){
                   alt="Bairro"
                   placeholder="Bairro"
                   widthInput="others" 
-                  maxLength={10}                 
-                  {...register('district')}
+                  maxLength={10}   
+                  {...register('district')}              
                 />
                 <Input
                   alt="Cidade"
                   placeholder="Cidade"
                   widthInput="city"    
-                  maxLength={20}              
-                  {...register('city')}
+                  maxLength={20}
+                  {...register('city')}             
                 />
                 <Input
                   alt="UF"
                   placeholder="UF"
                   widthInput="uf"
-                  maxLength={2}                             
-                  {...register('uf')}
+                  maxLength={2}
+                  {...register('uf')}                            
                 />
               </div>
             </FormFields>
