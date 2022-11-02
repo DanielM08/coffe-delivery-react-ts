@@ -7,6 +7,7 @@ export const IntroContainer = styled.main`
   flex-direction: row;
   justify-content: center;
   background-image: url(${background});
+  background-size: contain;
 `
 
 export const HomeText = styled.main`

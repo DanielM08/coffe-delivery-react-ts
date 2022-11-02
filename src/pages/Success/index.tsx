@@ -2,8 +2,27 @@ import { Icon, Info, InfoPanel, OrderInfo, SuccessContainer, Text } from "./styl
 
 import successIllustration from '../../assets/success-illustration.svg'
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
+import { useLocation } from "react-router-dom";
+import { PaymentOptionsEnum } from "../../contexts/CoffeeOrderContext";
+
+interface StateProps {
+  state: {
+    cep: string;
+    street: string;
+    num: string;
+    complement: string;
+    district: string;
+    city: string;
+    uf: string;
+    paymentOption: PaymentOptionsEnum;
+  }
+}
 
 export function Success() {
+
+  const { state }: StateProps = useLocation();
+  const { paymentOption } = state;
+
   return (
     <SuccessContainer>
       <strong>Uhu! Pedido confirmado</strong>
@@ -15,8 +34,8 @@ export function Success() {
               <MapPin size={20} weight="fill"/>
             </Icon>
             <Text>
-              <p>Entrega em <strong>Rua João Daniel Martinelli, 102</strong></p>
-              Farrapos - Porto Alegre, RS
+              <p>Entrega em <strong>{state.street}, {state.num}</strong></p>
+              {state.district} - {state.city}, {state.uf}
             </Text>                      
           </Info>
           
@@ -36,7 +55,7 @@ export function Success() {
             </Icon>
             <Text>
               <p>Pagamento na entrega</p>
-              <strong>Cartão de Crédito</strong>
+              <strong>{paymentOption}</strong>
             </Text>                        
           </Info>
         </OrderInfo>

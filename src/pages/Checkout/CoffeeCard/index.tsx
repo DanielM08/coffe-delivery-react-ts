@@ -39,16 +39,16 @@ export function CoffeeCard({ imgSrc, name, price, quantity }: CoffeeCardProps) {
           <Actions>
 
             <Counter>
-              <CoffeeQuantityButton onClick={handleCoffeeDecrease}>
+              <CoffeeQuantityButton onClick={handleCoffeeDecrease} type='button'>
                 <Minus size={12}/>
               </CoffeeQuantityButton>
               <span>{quantity}</span>
-              <CoffeeQuantityButton onClick={handleCoffeeIncrease}>
+              <CoffeeQuantityButton onClick={handleCoffeeIncrease} type='button'>
                 <Plus size={12}/>
               </CoffeeQuantityButton>
             </Counter>
 
-            <RemoveItemButton >
+            <RemoveItemButton type='button'>
               <Trash size ={16} color='#8047F8'/>
               <p>REMOVER</p>
             </RemoveItemButton>

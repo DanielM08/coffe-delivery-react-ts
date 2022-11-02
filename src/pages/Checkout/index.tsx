@@ -17,7 +17,7 @@ import {
   ConfirmOrderButton
 } from "./styles";
 import { useContext, useState } from "react";
-import { CoffeeOrderContext } from "../../contexts/CoffeeOrderContext";
+import { CoffeeOrderContext, PaymentOptionsEnum } from "../../contexts/CoffeeOrderContext";
 import { CoffeeCard } from "./CoffeeCard";
 import { currencyFormatter } from "../../utils/formatter";
 import { useForm } from 'react-hook-form';
@@ -53,21 +53,24 @@ export function Checkout(){
     },
   });
 
-  const { coffeeOrder, totalItemsPrice } = useContext(CoffeeOrderContext);
-  const [paymentOption, setPaymentOption] = useState('money');
+  const { coffeeOrder, totalItemsPrice, finishOrder } = useContext(CoffeeOrderContext);
+  const [paymentOption, setPaymentOption] = useState<PaymentOptionsEnum>(PaymentOptionsEnum.MONEY);
   const navigate = useNavigate()
 
-  function handlePaymentOption(selectedOption: string) {
+  function handlePaymentOption(selectedOption: PaymentOptionsEnum) {
     setPaymentOption(selectedOption);
   }
 
   function handleFinishPayment(data: FinishOrderFormData) {
-    console.log(data)
-    console.log(paymentOption)
-    
-    navigate('/success')
-
     reset();
+    finishOrder();
+    navigate('/success', { 
+      replace: true, 
+      state: {
+        ...data,
+        paymentOption,
+      }, 
+    })
   }
 
   return (
@@ -100,7 +103,7 @@ export function Checkout(){
                 alt="RUA"
                 placeholder="Rua"
                 widthInput="full"
-                maxLength={20}
+                maxLength={30}
                 {...register('street')}             
               />
               <div>
@@ -157,8 +160,9 @@ export function Checkout(){
 
             <PaymentOptions>
               <PaymentOption 
-                active={ paymentOption === 'credit_card' }
-                onClick={() => handlePaymentOption('credit_card')}
+                active={ paymentOption === PaymentOptionsEnum.CREDIT_CARD }
+                onClick={() => handlePaymentOption(PaymentOptionsEnum.CREDIT_CARD)}
+                type='button'
                 value='Credit card'
               >
                 <CreditCard size={16} color='#8047F8'/>
@@ -166,8 +170,9 @@ export function Checkout(){
               </PaymentOption>
 
               <PaymentOption
-                active={ paymentOption === 'debit_card' }
-                onClick={() => handlePaymentOption('debit_card')}
+                active={ paymentOption === PaymentOptionsEnum.DEBIT_CARD }
+                onClick={() => handlePaymentOption(PaymentOptionsEnum.DEBIT_CARD)}
+                type='button'
                 value='Debit card'                
               >
                 <Bank size={16} color='#8047F8'/>
@@ -175,8 +180,9 @@ export function Checkout(){
               </PaymentOption>
 
               <PaymentOption
-                active={ paymentOption === 'money' }
-                onClick={() => handlePaymentOption('money')}
+                active={ paymentOption === PaymentOptionsEnum.MONEY }
+                onClick={() => handlePaymentOption(PaymentOptionsEnum.MONEY)}
+                type='button'
                 value='Money'
               >
                 <Money size={16} color='#8047F8'/>

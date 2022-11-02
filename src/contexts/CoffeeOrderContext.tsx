@@ -14,12 +14,19 @@ interface OrderItem extends CoffeeInfo {
   quantity: number;
 }
 
+export enum PaymentOptionsEnum {
+  CREDIT_CARD = 'Cartão de crédito',
+  DEBIT_CARD = 'Cartão de débito',
+  MONEY = 'Dinheiro',
+}
+
 interface CoffeeOrderContextType {
   coffeeOrder: OrderItem[],
   totalCoffeeItems: number;
   totalItemsPrice: number;
   addCoffeeToOrder: (c: CoffeeInfo) => void;
   removeCoffeeFromOrder: (name: string) => void;
+  finishOrder: () => void;
 }
 
 export const CoffeeOrderContext = createContext({} as CoffeeOrderContextType);
@@ -64,6 +71,12 @@ export function CoffeeOrderContextProvider({ children }: CoffeeOrderContextProps
     setCoffeeOrder(newState);
   }
 
+  function finishOrder() {
+    setTotalItemsPrice(0);
+    setTotalCoffeeItems(0);
+    setCoffeeOrder([]);
+  }
+
   return (
     <CoffeeOrderContext.Provider
       value={{
@@ -71,7 +84,8 @@ export function CoffeeOrderContextProvider({ children }: CoffeeOrderContextProps
         totalCoffeeItems,
         totalItemsPrice,
         addCoffeeToOrder,
-        removeCoffeeFromOrder
+        removeCoffeeFromOrder,
+        finishOrder,
       }}
     >
       {children}
