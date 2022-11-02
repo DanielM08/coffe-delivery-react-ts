@@ -7,7 +7,7 @@ export const HeaderContainer = styled.header`
 export const HeaderContent = styled.div`
   width: 100%;
   gap: 14rem;
-  
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,8 +31,8 @@ export const Actions = styled.div`
     justify-content: center;
     align-items: center;
 
-    background: ${props => props.theme['purple-light']};
-    color: ${props => props.theme['purple-dark']};
+    background: ${(props) => props.theme['purple-light']};
+    color: ${(props) => props.theme['purple-dark']};
 
     font-size: 0.875rem;
     line-height: 1.3;
@@ -45,13 +45,13 @@ export const Cart = styled.nav`
   border-radius: 6px;
   position: relative;
 
-  background: ${props => props.theme['yellow-light']};
+  background: ${(props) => props.theme['yellow-light']};
 
   a {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: ${props => props.theme['yellow-dark']};
+    color: ${(props) => props.theme['yellow-dark']};
   }
 `
 
@@ -60,7 +60,7 @@ export const ShoppingItemsCounter = styled.strong`
   justify-content: center;
   align-items: center;
 
-  background: ${props => props.theme['yellow-dark']};
+  background: ${(props) => props.theme['yellow-dark']};
 
   position: absolute;
   width: 20px;
@@ -69,6 +69,6 @@ export const ShoppingItemsCounter = styled.strong`
   right: -10px;
   border-radius: 1000px;
 
-  color: ${props => props.theme.white};
+  color: ${(props) => props.theme.white};
   font-size: 0.75rem;
-`;  
+`

@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const CoffeeCardContainer = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ export const CoffeeCardContainer = styled.div`
   gap: 0.5rem;
 
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid ${props => props.theme["base-button"]};
+  border-bottom: 1px solid ${(props) => props.theme['base-button']};
 `
 
 export const Info = styled.div`
@@ -29,12 +29,12 @@ export const Details = styled.div`
   padding: 0px;
   gap: 0.5rem;
 
-  p { 
+  p {
     font-size: 1rem;
     line-height: 1.3;
     display: flex;
     align-items: center;
-    color: ${props => props.theme["base-subtitle"]}
+    color: ${(props) => props.theme['base-subtitle']};
   }
 `
 
@@ -55,7 +55,7 @@ export const Counter = styled.div`
   padding: 0.3rem;
   gap: 0.4rem;
 
-  background: ${props => props.theme["base-button"]};
+  background: ${(props) => props.theme['base-button']};
   border-radius: 6px;
 `
 
@@ -68,21 +68,21 @@ const Button = styled.button`
 `
 
 export const CoffeeQuantityButton = styled(Button)`
-  background: ${props => props.theme["base-button"]};
-  color: ${props => props.theme["purple-dark"]};
+  background: ${(props) => props.theme['base-button']};
+  color: ${(props) => props.theme['purple-dark']};
 `
 
-export const RemoveItemButton = styled(Button)` 
+export const RemoveItemButton = styled(Button)`
   align-items: center;
   padding: 0.35rem;
   gap: 0.25rem;
 
-  background: ${props => props.theme["base-button"]};
+  background: ${(props) => props.theme['base-button']};
   border-radius: 6px;
 
-  p { 
+  p {
     font-size: 0.75rem;
-    color: ${props => props.theme["base-text"]};
+    color: ${(props) => props.theme['base-text']};
     line-height: 1.6;
   }
 `

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const CheckoutContainer = styled.main`
   form {
@@ -26,7 +26,7 @@ export const FormSection = styled.div`
   padding: 2.5rem;
   gap: 2rem;
 
-  background: ${props => props.theme["base-card"]};
+  background: ${(props) => props.theme['base-card']};
   border-radius: 6px;
 `
 
@@ -46,7 +46,7 @@ export const FormDescription = styled.div`
   gap: 0.125rem;
 
   h3 {
-    color: ${props => props.theme["base-subtitle"]};
+    color: ${(props) => props.theme['base-subtitle']};
     font-size: 1rem;
     line-height: 1.3rem;
   }
@@ -72,28 +72,28 @@ export const FormFields = styled.div`
 const InputBase = styled.input`
   box-sizing: border-box;
   padding: 0.75rem;
-  
-  background: ${props => props.theme["base-input"]};
-  border: 1px solid ${props => props.theme["base-input"]};
+
+  background: ${(props) => props.theme['base-input']};
+  border: 1px solid ${(props) => props.theme['base-input']};
   border-radius: 4px;
 
-  color: ${props => props.theme["base-label"]};
+  color: ${(props) => props.theme['base-label']};
   font-size: 0.875rem;
   line-height: 1.3;
 `
 
 const WIDTH_SIZE = {
-  'full': '100%',
-  'complement': '70%',
-  'city': '60%',
-  'uf': '10%',
-  'others': '30%',
+  full: '100%',
+  complement: '70%',
+  city: '60%',
+  uf: '10%',
+  others: '30%',
 } as const
 interface InputProps {
   widthInput: keyof typeof WIDTH_SIZE
-} 
+}
 export const Input = styled(InputBase)<InputProps>`
-  width: ${props => WIDTH_SIZE[props.widthInput]};
+  width: ${(props) => WIDTH_SIZE[props.widthInput]};
 `
 
 export const PaymentOptions = styled.div`
@@ -119,25 +119,20 @@ export const PaymentOption = styled.button<PaymentOptionProps>`
 
   font-size: 0.75rem;
   line-height: 1.6;
-  color: ${props => props.theme["base-text"]};
+  color: ${(props) => props.theme['base-text']};
 
   background: ${(props) =>
-      props.active 
-        ? props.theme["purple-light"]
-        : props.theme["base-button"]};
+    props.active ? props.theme['purple-light'] : props.theme['base-button']};
 
   border-radius: 6px;
-  border: 1px solid ${(props) =>
-    props.active 
-      ? props.theme["purple"]
-      : props.theme["base-button"]};
+  border: 1px solid
+    ${(props) =>
+      props.active ? props.theme.purple : props.theme['base-button']};
 
-  &:hover{
+  &:hover {
     transition: 0.2s;
     background: ${(props) =>
-      props.active 
-        ? props.theme["purple-light"]
-        : props.theme["base-hover"]};
+      props.active ? props.theme['purple-light'] : props.theme['base-hover']};
   }
   cursor: pointer;
 `
@@ -179,7 +174,7 @@ export const PriceElement = styled.div`
   }
 
   h2 {
-    color: ${props => props.theme["base-subtitle"]}
+    color: ${(props) => props.theme['base-subtitle']};
   }
 `
 
@@ -195,17 +190,17 @@ export const ConfirmOrderButton = styled.button`
   padding: 0.75rem 0.5rem;
   gap: 0.125rem;
 
-  background: ${props => props.theme.yellow};
+  background: ${(props) => props.theme.yellow};
   border-radius: 6px;
 
   font-weight: 700;
   font-size: 0.875rem;
   line-height: 160%;
   text-transform: uppercase;
-  color: ${props => props.theme.white};
+  color: ${(props) => props.theme.white};
 
   &:not(:disabled):hover {
-    background: ${(props) => props.theme["yellow-dark"]};
+    background: ${(props) => props.theme['yellow-dark']};
   }
 
   &:disabled {

@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const SuccessContainer = styled.main`
   margin-top: 5rem;
 
   > strong {
-    color: ${props => props.theme["yellow-dark"]};
+    color: ${(props) => props.theme['yellow-dark']};
     font-family: 'baloo 2';
     line-height: 1.3;
     font-size: 2rem;
@@ -13,7 +13,7 @@ export const SuccessContainer = styled.main`
   > p {
     font-size: 1.25rem;
     line-height: 1.3;
-    color: ${props => props.theme["base-subtitle"]};
+    color: ${(props) => props.theme['base-subtitle']};
   }
 `
 
@@ -38,10 +38,9 @@ export const OrderInfo = styled.div`
   width: 100%;
   max-width: 800px;
 
-  background:
-    linear-gradient(white, white) padding-box, 
-    linear-gradient(to right, #DBAC2C 0%, #8047F8 100%) border-box;
-  
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(to right, #dbac2c 0%, #8047f8 100%) border-box;
+
   border: 1px solid transparent;
   border-radius: 6px 36px;
 `
@@ -66,9 +65,9 @@ export const Icon = styled.span<IconProps>`
   align-items: center;
   padding: 0.5rem;
   gap: 0.5rem;
-  
-  color: ${props => props.theme.white};
-  background: ${props => props.theme[props.variant]};
+
+  color: ${(props) => props.theme.white};
+  background: ${(props) => props.theme[props.variant]};
   border-radius: 1000px;
 `
 
@@ -78,5 +77,5 @@ export const Text = styled.div`
 
   font-size: 1rem;
   line-height: 1.3;
-  color: ${props => props.theme["base-text"]}
+  color: ${(props) => props.theme['base-text']};
 `

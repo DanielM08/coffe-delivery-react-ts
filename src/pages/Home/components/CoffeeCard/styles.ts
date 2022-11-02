@@ -1,9 +1,9 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const CoffeeCardContainer = styled.div`
   max-width: 256px;
 
-  background: ${props => props.theme["base-card"]};
+  background: ${(props) => props.theme['base-card']};
   border-radius: 6px 36px;
 
   display: flex;
@@ -32,8 +32,8 @@ export const Tag = styled.div`
   padding: 4px 8px;
   border-radius: 100px;
 
-  background: ${props => props.theme["yellow-light"]};
-  color: ${props => props.theme["yellow-dark"]};
+  background: ${(props) => props.theme['yellow-light']};
+  color: ${(props) => props.theme['yellow-dark']};
 
   line-height: 1.3;
   font-size: 10px;
@@ -46,9 +46,9 @@ export const Description = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  
+
   gap: 0.5rem;
-  
+
   h3 {
     font-family: 'Baloo 2';
     font-size: 20px;
@@ -56,7 +56,7 @@ export const Description = styled.div`
   }
 
   p {
-    color: ${props => props.theme["base-label"]};
+    color: ${(props) => props.theme['base-label']};
   }
 
   margin-bottom: 33px;
@@ -102,7 +102,7 @@ export const Counter = styled.div`
   padding: 0.5rem;
   gap: 0.25rem;
 
-  background: ${props => props.theme["base-button"]};
+  background: ${(props) => props.theme['base-button']};
   border-radius: 6px;
 `
 
@@ -120,14 +120,14 @@ const Button = styled.button`
 `
 
 export const CoffeeQuantityButton = styled(Button)`
-  background: ${props => props.theme["base-button"]};
-  color: ${props => props.theme["purple-dark"]};
+  background: ${(props) => props.theme['base-button']};
+  color: ${(props) => props.theme['purple-dark']};
 `
 
 export const ShoppingButton = styled(Button)`
   border-radius: 6px;
   padding: 0.5rem;
-  
-  background: ${props => props.theme["purple-dark"]};
-  color: ${props => props.theme.white};
+
+  background: ${(props) => props.theme['purple-dark']};
+  color: ${(props) => props.theme.white};
 `

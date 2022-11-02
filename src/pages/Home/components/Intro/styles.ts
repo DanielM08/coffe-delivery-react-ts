@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 import background from '../../../../assets/background.svg'
 
 export const IntroContainer = styled.main`
@@ -27,7 +27,7 @@ export const Title = styled.div`
     font-weight: 800;
     font-size: 3rem;
     line-height: 1.3;
-    color: ${props => props.theme["base-title"]};
+    color: ${(props) => props.theme['base-title']};
   }
 
   p {
@@ -47,14 +47,14 @@ export const MarketingElements = styled.div`
 
 const STATUS_COLORS = {
   'yellow-dark': 'yellow-dark',
-  'yellow': 'yellow',
-  'purple': 'purple',
-  'gray': 'base-text',
+  yellow: 'yellow',
+  purple: 'purple',
+  gray: 'base-text',
 } as const
 
 interface ElementProps {
   color: keyof typeof STATUS_COLORS
-} 
+}
 
 export const MarketingElement = styled.div<ElementProps>`
   display: flex;
@@ -71,7 +71,7 @@ export const MarketingElement = styled.div<ElementProps>`
     gap: 8px;
     border-radius: 1000px;
 
-    background-color: ${props => props.theme[STATUS_COLORS[props.color]]};
-    color: ${props => props.theme.white};
+    background-color: ${(props) => props.theme[STATUS_COLORS[props.color]]};
+    color: ${(props) => props.theme.white};
   }
 `
